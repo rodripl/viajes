@@ -9,7 +9,95 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            color: #2563eb;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .visit-counter {
+            margin-top: 20px;
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -19,24 +107,20 @@
         </header>
 
         <main class="content">
-            <h2 style="color: #2563eb; margin-bottom: 20px; font-size: 1.8em;">La Magia de Viajar</h2>
+            <h2 style="color:#2563eb;margin-bottom:20px;">La Magia de Viajar</h2>
 
             <p>
-                Viajar es una de las experiencias más enriquecedoras que podemos vivir. Cada destino nos ofrece la oportunidad de descubrir nuevas culturas, probar sabores exóticos y conocer personas fascinantes que amplían nuestra perspectiva del mundo.
+                Viajar es una de las experiencias más enriquecedoras que podemos vivir.
             </p>
 
             <img
                 src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=400&fit=crop"
-                alt="Paisaje montañoso con viajero contemplando el horizonte"
+                alt="Paisaje"
                 class="featured-image"
             >
 
             <p>
-                Desde las majestuosas montañas hasta las playas paradisíacas, nuestro planeta está lleno de maravillas esperando ser exploradas. Cada viaje es una historia única, una colección de momentos que se convierten en recuerdos atesorados para toda la vida.
-            </p>
-
-            <p>
-                No importa si prefieres la aventura extrema, el turismo cultural o simplemente relajarte en un lugar tranquilo. Lo importante es salir de tu zona de confort y permitirte experimentar el mundo con todos tus sentidos. Los viajes nos enseñan que, a pesar de nuestras diferencias, todos compartimos la misma humanidad.
+                Cada viaje es una historia única llena de recuerdos inolvidables.
             </p>
 
             <button class="btn" onclick="mostrarMensaje()">🌍 Inspírame a Viajar</button>
@@ -47,7 +131,33 @@
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let visitas = 0;
+        const contadorElement = document.getElementById('contador');
+
+        function actualizarContador() {
+            visitas++;
+            contadorElement.textContent = visitas;
+        }
+
+        window.addEventListener('load', () => {
+            visitas = Math.floor(Math.random() * 1000) + 100;
+            contadorElement.textContent = visitas;
+        });
+
+        function mostrarMensaje() {
+            const destinos = [
+                'París te espera ❤️',
+                'Japón y sus cerezos 🌸',
+                'Grecia y sus playas 🏖️',
+                'Nueva York 🗽'
+            ];
+
+            alert(destinos[Math.floor(Math.random() * destinos.length)]);
+            actualizarContador();
+        }
+    </script>
 </body>
 </html>
+
 

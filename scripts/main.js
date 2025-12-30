@@ -1,6 +1,3 @@
-// JavaScript - Funcionalidad interactiva
-
-// Contador de visitas simulado
 let visitas = 0;
 const contadorElement = document.getElementById('contador');
 
@@ -13,13 +10,11 @@ function actualizarContador() {
     }, 200);
 }
 
-// Iniciar contador al cargar la página
 window.addEventListener('load', () => {
     visitas = Math.floor(Math.random() * 1000) + 100;
     contadorElement.textContent = visitas;
 });
 
-// Función para el botón inspirador
 function mostrarMensaje() {
     const destinos = [
         '¿Qué tal París? La ciudad del amor te espera',
@@ -31,10 +26,9 @@ function mostrarMensaje() {
         'Perú y Machu Picchu: una experiencia mística',
         'Italia: arte, historia y la mejor comida del mundo'
     ];
-    
+
     const destinoAleatorio = destinos[Math.floor(Math.random() * destinos.length)];
-    
-    // Crear elemento de mensaje
+
     const mensaje = document.createElement('div');
     mensaje.style.cssText = `
         position: fixed;
@@ -50,7 +44,7 @@ function mostrarMensaje() {
         animation: fadeInUp 0.5s ease;
         max-width: 90%;
     `;
-    
+
     mensaje.innerHTML = `
         <h3 style="color: #2563eb; margin-bottom: 15px; font-size: 1.5em;">✨ Tu Próximo Destino</h3>
         <p style="font-size: 1.2em; margin-bottom: 20px;">${destinoAleatorio}</p>
@@ -65,14 +59,12 @@ function mostrarMensaje() {
             font-family: 'Poppins', sans-serif;
         ">¡Perfecto!</button>
     `;
-    
+
     document.body.appendChild(mensaje);
-    
-    // Actualizar contador
+
     actualizarContador();
 }
 
-// Efecto parallax suave al hacer scroll
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const header = document.querySelector('header');
@@ -80,3 +72,4 @@ window.addEventListener('scroll', () => {
         header.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
 });
+

@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorando el Mundo con Rodri - Mi Sitio de Viajes</title>
-
+    <title>Wanderlust Adventures - Explora el Mundo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,143 +19,310 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             min-height: 100vh;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+            overflow-x: hidden;
         }
 
         header {
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
-            border-radius: 20px;
+            padding: 2rem;
             text-align: center;
-            margin-bottom: 30px;
-            animation: fadeInDown 0.8s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         h1 {
-            color: #2563eb;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
         }
 
         .subtitle {
             color: #666;
+            font-size: 1.2rem;
         }
 
-        .content {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            background: white;
             border-radius: 20px;
-            animation: fadeInUp 0.8s ease;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .featured-image {
-            width: 100%;
-            height: 400px;
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #764ba2;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            width: 300px;
+            height: 200px;
             object-fit: cover;
             border-radius: 15px;
-            margin: 30px 0;
-        }
-
-        p {
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            border: none;
             cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .text-input-section {
+            margin: 2rem 0;
+        }
+
+        #nameInput {
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #greeting {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #764ba2;
+            min-height: 2rem;
             font-weight: 600;
         }
 
-        .visit-counter {
-            margin-top: 20px;
-            background: #2563eb;
-            color: white;
-            padding: 10px 20px;
+        #plane {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            font-size: 60px;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .link-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
             border-radius: 10px;
-            display: inline-block;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .link-section a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .link-section a:hover {
+            color: #764ba2;
+        }
+
+        .destination-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+            color: #666;
+        }
+
+        .footer-content a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .gallery img {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="plane">✈️</div>
+
+    <header>
+        <h1>Wanderlust Adventures</h1>
+        <p class="subtitle">Descubre destinos increíbles alrededor del mundo</p>
+    </header>
+
     <div class="container">
-        <header>
-            <h1>✈️ Explorando el Mundo con Rodri</h1>
-            <p class="subtitle">Aventuras, culturas y experiencias inolvidables</p>
-        </header>
-
-        <main class="content">
-            <h2 style="color:#2563eb;margin-bottom:20px;">La Magia de Viajar</h2>
-
-            <p>
-              Viajar es una de las experiencias más enriquecedoras que podemos vivir. Cada destino nos ofrece la oportunidad de descubrir nuevas culturas, probar sabores exóticos y conocer personas fascinantes que amplían nuestra perspectiva del mundo.
-            </p>
-
-            <img
-                src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=400&fit=crop"
-                alt="Paisaje"
-                class="featured-image"
-            >
-
-            <p>
-                Desde las majestuosas montañas hasta las playas paradisíacas, nuestro planeta está lleno de maravillas esperando ser exploradas. Cada viaje es una historia única, una colección de momentos que se convierten en recuerdos atesorados para toda la vida.
-
-No importa si prefieres la aventura extrema, el turismo cultural o simplemente relajarte en un lugar tranquilo. Lo importante es salir de tu zona de confort y permitirte experimentar el mundo con todos tus sentidos. Los viajes nos enseñan que, a pesar de nuestras diferencias, todos compartimos la misma humanidad.
-            </p>
-
-            <button class="btn" onclick="mostrarMensaje()">🌍 Inspírame a Viajar</button>
-
-            <div class="visit-counter">
-                👥 Visitantes: <span id="contador">0</span>
+        <section class="content-section">
+            <h2>Galería de Destinos</h2>
+            <p>Haz clic en las imágenes para intercambiarlas y explorar diferentes destinos</p>
+            <div class="gallery">
+                <img id="img1" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&h=300&fit=crop" alt="París - Torre Eiffel">
+                <img id="img2" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=500&h=300&fit=crop" alt="Santorini - Grecia">
             </div>
-        </main>
+        </section>
+
+        <section class="content-section">
+            <h2>Personaliza tu Experiencia</h2>
+            <div class="text-input-section">
+                <label for="nameInput">Introduce tu nombre para una bienvenida personalizada:</label><br><br>
+                <input type="text" id="nameInput" placeholder="Escribe tu nombre aquí...">
+                <div id="greeting"></div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Destino Destacado</h2>
+            <img class="destination-image" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Montañas escénicas">
+            <p style="margin-top: 1rem; line-height: 1.8;">
+                Explora paisajes impresionantes, culturas fascinantes y aventuras inolvidables. 
+                Nuestro equipo te ayuda a planificar el viaje perfecto adaptado a tus sueños.
+            </p>
+        </section>
+
+        <section class="content-section link-section">
+            <h2>Recursos Útiles</h2>
+            <p>
+                Visita 
+                <a href="https://www.lonelyplanet.com/es" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   title="Lonely Planet - Guías de viaje y consejos para viajeros">
+                   Lonely Planet
+                </a> 
+                para más información sobre destinos y consejos de viaje.
+            </p>
+        </section>
     </div>
 
+    <footer>
+        <div class="footer-content">
+            <p><strong>Wanderlust Adventures</strong></p>
+            <p>Tu compañero de viajes perfecto</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                Licencia: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer" title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0">CC BY-NC-SA 4.0</a>
+            </p>
+        </div>
+    </footer>
+
     <script>
-        let visitas = 0;
-        const contadorElement = document.getElementById('contador');
+        // Recurso JS 1: Intercambio de imágenes al hacer clic
+        const img1 = document.getElementById('img1');
+        const img2 = document.getElementById('img2');
 
-        function actualizarContador() {
-            visitas++;
-            contadorElement.textContent = visitas;
-        }
+        const images = [
+            'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=300&fit=crop',
+            'https://images.unsplash.com/photo-1468413253725-0d5181091126?w=500&h=300&fit=crop'
+        ];
 
-        window.addEventListener('load', () => {
-            visitas = Math.floor(Math.random() * 1000) + 100;
-            contadorElement.textContent = visitas;
+        let currentIndex1 = 0;
+        let currentIndex2 = 1;
+
+        img1.addEventListener('click', function() {
+            currentIndex1 = (currentIndex1 + 1) % images.length;
+            img1.src = images[currentIndex1];
         });
 
-        function mostrarMensaje() {
-            const destinos = [
-                'París te espera ❤️',
-                'Japón y sus cerezos 🌸',
-                'Grecia y sus playas 🏖️',
-                'Nueva York 🗽'
-            ];
+        img2.addEventListener('click', function() {
+            currentIndex2 = (currentIndex2 + 1) % images.length;
+            img2.src = images[currentIndex2];
+        });
 
-            alert(destinos[Math.floor(Math.random() * destinos.length)]);
-            actualizarContador();
+        // Recurso JS 2: Campo de texto que cambia el saludo
+        const nameInput = document.getElementById('nameInput');
+        const greeting = document.getElementById('greeting');
+
+        nameInput.addEventListener('input', function() {
+            const name = nameInput.value.trim();
+            if (name) {
+                greeting.textContent = `¡Hola ${name}! Bienvenido/a a Wanderlust Adventures 🌍✨`;
+            } else {
+                greeting.textContent = '';
+            }
+        });
+
+        // Recurso JS 3: Objeto en movimiento (avión)
+        const plane = document.getElementById('plane');
+        let x = 0;
+        let y = 50;
+        let dx = 2;
+        let dy = 1.5;
+
+        function movePlane() {
+            const maxX = window.innerWidth - 80;
+            const maxY = window.innerHeight - 80;
+
+            x += dx;
+            y += dy;
+
+            if (x >= maxX || x <= 0) {
+                dx = -dx;
+                plane.style.transform = dx > 0 ? 'scaleX(1)' : 'scaleX(-1)';
+            }
+            if (y >= maxY || y <= 0) {
+                dy = -dy;
+            }
+
+            plane.style.left = x + 'px';
+            plane.style.top = y + 'px';
+
+            requestAnimationFrame(movePlane);
         }
+
+        movePlane();
+
+        // Ajustar posición del avión al cambiar tamaño de ventana
+        window.addEventListener('resize', function() {
+            const maxX = window.innerWidth - 80;
+            const maxY = window.innerHeight - 80;
+            if (x > maxX) x = maxX;
+            if (y > maxY) y = maxY;
+        });
     </script>
 </body>
 </html>

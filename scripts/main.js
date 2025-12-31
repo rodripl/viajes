@@ -1,64 +1,80 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let visitas = 0;
-    const contadorElement = document.getElementById('contador');
-    const header = document.querySelector('header');
+// script.js - Wanderlust Adventures
 
-    if (!contadorElement) return;
+// Recurso JS 1: Intercambio de imágenes al hacer clic
+const img1 = document.getElementById('img1');
+const img2 = document.getElementById('img2');
 
-    function actualizarContador() {
-        visitas++;
-        contadorElement.textContent = visitas;
-        contadorElement.classList.add('contador-animado');
-        setTimeout(() => {
-            contadorElement.classList.remove('contador-animado');
-        }, 200);
+const images = [
+    'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=500&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=500&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1468413253725-0d5181091126?w=500&h=300&fit=crop'
+];
+
+let currentIndex1 = 0;
+let currentIndex2 = 1;
+
+img1.addEventListener('click', function() {
+    currentIndex1 = (currentIndex1 + 1) % images.length;
+    img1.src = images[currentIndex1];
+});
+
+img2.addEventListener('click', function() {
+    currentIndex2 = (currentIndex2 + 1) % images.length;
+    img2.src = images[currentIndex2];
+});
+
+// Recurso JS 2: Campo de texto que cambia el saludo
+const nameInput = document.getElementById('nameInput');
+const greeting = document.getElementById('greeting');
+
+nameInput.addEventListener('input', function() {
+    const name = nameInput.value.trim();
+    if (name) {
+        greeting.textContent = `¡Hola ${name}! Bienvenido/a a Wanderlust Adventures 🌍✨`;
+    } else {
+        greeting.textContent = '';
+    }
+});
+
+// Recurso JS 3: Objeto en movimiento (avión)
+const plane = document.getElementById('plane');
+let x = 0;
+let y = 50;
+let dx = 2;
+let dy = 1.5;
+
+function movePlane() {
+    const maxX = window.innerWidth - 80;
+    const maxY = window.innerHeight - 80;
+
+    x += dx;
+    y += dy;
+
+    if (x >= maxX || x <= 0) {
+        dx = -dx;
+        plane.style.transform = dx > 0 ? 'scaleX(1)' : 'scaleX(-1)';
+    }
+    if (y >= maxY || y <= 0) {
+        dy = -dy;
     }
 
-    visitas = Math.floor(Math.random() * 1000) + 100;
-    contadorElement.textContent = visitas;
+    plane.style.left = x + 'px';
+    plane.style.top = y + 'px';
 
-    window.mostrarMensaje = function () {
-        const destinos = [
-            '¿Qué tal París? La ciudad del amor te espera',
-            'Japón te llama con sus templos y cerezos en flor',
-            'Grecia tiene historia y playas increíbles',
-            'Bali ofrece paz, cultura y paisajes de ensueño',
-            'Nueva York: la ciudad que nunca duerme',
-            'Australia combina aventura y naturaleza única',
-            'Perú y Machu Picchu: una experiencia mística',
-            'Italia: arte, historia y la mejor comida del mundo'
-        ];
+    requestAnimationFrame(movePlane);
+}
 
-        const destino = destinos[Math.floor(Math.random() * destinos.length)];
+movePlane();
 
-        const overlay = document.createElement('div');
-        overlay.className = 'modal-overlay';
-
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-
-        modal.innerHTML = `
-            <h3>✨ Tu Próximo Destino</h3>
-            <p>${destino}</p>
-            <button class="btn cerrar-modal">¡Perfecto!</button>
-        `;
-
-        overlay.appendChild(modal);
-        document.body.appendChild(overlay);
-
-        overlay.addEventListener('click', e => {
-            if (e.target.classList.contains('cerrar-modal') || e.target === overlay) {
-                overlay.remove();
-            }
-        });
-
-        actualizarContador();
-    };
-
-    window.addEventListener('scroll', () => {
-        if (!header) return;
-        header.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-    });
+// Ajustar posición del avión al cambiar tamaño de ventana
+window.addEventListener('resize', function() {
+    const maxX = window.innerWidth - 80;
+    const maxY = window.innerHeight - 80;
+    if (x > maxX) x = maxX;
+    if (y > maxY) y = maxY;
 });
 
 
